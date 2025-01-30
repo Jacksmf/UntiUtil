@@ -14,6 +14,11 @@ commands:
     usage: /<command> <player> | <x> <y> <z>
     aliases: [ teleport ]
     permission: untiutils.tp.*
+  vanish:
+    description: This will make the player invisible to the other players (except for the admins and the player itself)
+    usage: /<command>
+    aliases: [ v ]
+    permission: untiutils.vanish
 
 
 permissions:
@@ -29,3 +34,5 @@ permissions:
     children:
       untiutils.tp.tp: true
       untiutils.tp.tp.others: true
+  untiutils.vanish:
+    description: Gives access to vanish command

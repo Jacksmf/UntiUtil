@@ -1,6 +1,7 @@
 package com.untistore.utils.listeners;
 
 import com.untistore.utils.managers.ConfigManager;
+import com.untistore.utils.managers.VanishManager;
 import com.untistore.utils.utils.StringUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,6 +14,8 @@ public class PlayerListeners implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         handleJoinMessages(e);
+
+        VanishManager.hideAllPlayersInVanish(e.getPlayer());
     }
 
     @EventHandler
@@ -26,6 +29,8 @@ public class PlayerListeners implements Listener {
         if (e.getMessage().contains("[item]")) e.setMessage(e.getMessage().replace("[item]", "§7[§6" + StringUtils.filterAll(e.getPlayer().getInventory().getItemInMainHand().getType().name() + "§7]" + "§r")));
     }
 
+
+
     private void handleChatMessages(AsyncPlayerChatEvent e, String message) {
         if (!config.contains("chat") || !config.get("chat.enabled").equals(true)) {
             e.setMessage(message);
@@ -34,7 +39,6 @@ public class PlayerListeners implements Listener {
 
         e.setMessage(config.get("chat.prefix").toString() + message);
     }
-
 
     public void handleJoinMessages(PlayerJoinEvent e) {
         if (!config.contains("join")) return;
