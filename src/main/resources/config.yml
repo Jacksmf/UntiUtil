@@ -1,0 +1,12 @@
+join:
+  enabled: true
+  type: "message"
+  message: "Welcome, %player%!"
+  firstJoin:
+    enabled: true
+    message: "Welcome, %player%! This is your first time joining the server!"
+
+quit:
+  type: "message"
+  message: "Goodbye, %player%!"
+

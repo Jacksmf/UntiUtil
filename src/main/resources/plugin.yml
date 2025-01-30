@@ -1,0 +1,31 @@
+name: UntiUtils
+main: com.untistore.utils.Main
+version: 1.0
+author: Jacksmf
+description: A Utils plugin
+commands:
+  gamemode:
+    description: change gamemode
+    usage: /<command>
+    aliases: [ gmc, gms, gma, gmsp ]
+    permission: untiutils.gamemode.*
+  tp:
+    description: teleport to player or coordinates
+    usage: /<command> <player> | <x> <y> <z>
+    aliases: [ teleport ]
+    permission: untiutils.tp.*
+
+
+permissions:
+  untiutils.gamemode.*:
+    description: Gives access to all gamemode commands
+    children:
+      untiutils.gamemode.gmc: true
+      untiutils.gamemode.gms: true
+      untiutils.gamemode.gma: true
+      untiutils.gamemode.gmsp: true
+  untiutils.tp.*:
+    description: Gives access to all teleport commands
+    children:
+      untiutils.tp.tp: true
+      untiutils.tp.tp.others: true
