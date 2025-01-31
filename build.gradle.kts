@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.untistore.utils"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -44,9 +44,9 @@ tasks {
 
     // Configure shadowJar task
     shadowJar {
-        archiveClassifier.set("") // Avoid "-all" suffix
-        archiveFileName.set("untituils-${version}.jar") // Output jar name
-        mergeServiceFiles() // Handle service files if needed
+        archiveClassifier.set("")
+        archiveFileName.set("untituils-${version}.jar")
+        mergeServiceFiles()
         dependencies {
             include(dependency("com.zaxxer:HikariCP"))
             include(dependency("mysql:mysql-connector-java"))

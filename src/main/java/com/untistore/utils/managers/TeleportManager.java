@@ -1,5 +1,6 @@
 package com.untistore.utils.managers;
 
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 public class TeleportManager {
@@ -29,5 +30,13 @@ public class TeleportManager {
         target.sendMessage("§aYou have been teleported to §6" + target.getName() + " " + x + " " + y + " " + z);
         player.sendMessage("§aYou have teleported §6" + target.getName() + " to §6" + x + " " + y + " " + z);
 
+    }
+
+    public static void teleportPlayer(Player player, World world, int x, int y, int z) {
+        if (!PermissionManager.doesPlayerHasPermission(player, "untiutils.tp")) return;
+
+        player.teleport(world.getHighestBlockAt(x, y).getLocation());
+
+        player.sendMessage("§aYou have been teleported to §6" + world.getName() + " " + x + " " + y + " " + z);
     }
 }

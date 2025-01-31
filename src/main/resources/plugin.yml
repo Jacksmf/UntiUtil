@@ -19,7 +19,15 @@ commands:
     usage: /<command>
     aliases: [ v ]
     permission: untiutils.vanish
-
+  lockdown:
+    description: This will enable the lockdown mode, Lockdown makes it so players can't break, or place blocks or join
+    usage: /<command>
+    aliases: [ lock ]
+    permission: untiutils.lockdown.*
+  lobby:
+    description: Teleport to the lobby of the server
+    usage: /<command>
+    aliases: [ spawn, hub ]
 
 permissions:
   untiutils.gamemode.*:
@@ -36,3 +44,8 @@ permissions:
       untiutils.tp.tp.others: true
   untiutils.vanish:
     description: Gives access to vanish command
+  untiutils.lockdown.*:
+    description: Gives access to all lockdown commands and options
+    children:
+      untiutils.lockdown.on: true
+      untiutils.lockdown.off: true

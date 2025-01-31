@@ -24,8 +24,6 @@ public class PlayerListeners implements Listener {
 
         handleChatMessages(e, finalMessage);
 
-
-
         if (e.getMessage().contains("[item]")) e.setMessage(e.getMessage().replace("[item]", "§7[§6" + StringUtils.filterAll(e.getPlayer().getInventory().getItemInMainHand().getType().name() + "§7]" + "§r")));
     }
 
@@ -45,11 +43,17 @@ public class PlayerListeners implements Listener {
         if (config.get("join.enabled").equals(false)) return;
 
         if (e.getPlayer().hasPlayedBefore()) {
-            e.getPlayer().sendMessage(config.get("join.message").toString());
+            String message = config.get("join.message").toString();
+            String finalMessage = StringUtils.filterPlaceholders(message, e.getPlayer());
+
+            e.getPlayer().sendMessage(finalMessage);
         }
         else {
             if (config.get("join.firstJoin.enabled").equals(true)) {
-                e.getPlayer().sendMessage(config.get("join.firstJoin.message").toString());
+                String message = config.get("join.firstJoin.message").toString();
+                String finalMessage = StringUtils.filterPlaceholders(message, e.getPlayer());
+
+                e.getPlayer().sendMessage(finalMessage);
             }
         }
     }

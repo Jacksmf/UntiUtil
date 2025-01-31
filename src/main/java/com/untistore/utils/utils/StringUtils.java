@@ -51,7 +51,7 @@ public class StringUtils {
     }
 
     public static String filterPlaceholders(String message, Player player) {
-        message = message.replace("%player%", player.getName());
+        message = message.replace("%player_name%", player.getName());
         message = message.replace("%online%", String.valueOf(player.getServer().getOnlinePlayers().size()));
         message = message.replace("%max%", String.valueOf(player.getServer().getMaxPlayers()));
         return message;
