@@ -1,6 +1,8 @@
 package com.untistore.utils.listeners;
 
 import com.untistore.utils.managers.ConfigManager;
+import com.untistore.utils.managers.LockdownManager;
+import com.untistore.utils.managers.PermissionManager;
 import com.untistore.utils.managers.VanishManager;
 import com.untistore.utils.utils.StringUtils;
 import org.bukkit.event.EventHandler;
@@ -13,6 +15,12 @@ public class PlayerListeners implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
+        if (LockdownManager.isServerInLockdown() && !PermissionManager.doesPlayerHasPermission(e.getPlayer(), "untiutils.lockdown.*")) {
+            e.setJoinMessage(null);
+            e.getPlayer().kickPlayer("The Server is currently Lockdown");
+        }
+
+
         handleJoinMessages(e);
 
         VanishManager.hideAllPlayersInVanish(e.getPlayer());
